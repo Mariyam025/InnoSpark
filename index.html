@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>InnoSpark | Student Innovation Platform</title>
+
+    <meta name="description"
+          content="InnoSpark - Discover, share and build student innovations.">
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top inno-navbar">
+
+    <div class="container">
+
+        <a class="navbar-brand brand-link" href="#" data-view="dashboard">
+
+            <span class="brand-icon">
+                <i class="bi bi-lightning-charge-fill"></i>
+            </span>
+
+            <span>
+                Inno<span class="brand-highlight">Spark</span>
+            </span>
+
+        </a>
+
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+
+                <li class="nav-item">
+                    <a class="nav-link active nav-view"
+                       href="#"
+                       data-view="dashboard">
+
+                        <i class="bi bi-grid-1x2-fill"></i>
+                        Explore
+
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link nav-view"
+                       href="#"
+                       data-view="profile">
+
+                        <i class="bi bi-person-circle"></i>
+                        My Profile
+
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link nav-view"
+                       href="#"
+                       data-view="submit">
+
+                        <i class="bi bi-plus-circle"></i>
+                        Submit Idea
+
+                    </a>
+                </li>
+
+                <li class="nav-item">
+
+                    <button
+                        class="btn btn-neon btn-sm nav-launch"
+                        data-view="submit">
+
+                        <i class="bi bi-rocket-takeoff-fill"></i>
+                        Launch Idea
+
+                    </button>
+
+                </li>
+
+                <li class="nav-item ms-lg-2">
+
+                    <button
+                        id="loginNavButton"
+                        class="btn btn-login btn-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#authModal">
+
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        Login
+
+                    </button>
+
+                    <div
+                        id="userNav"
+                        class="user-nav d-none">
+
+                        <button
+                            id="userNavButton"
+                            class="user-menu-button"
+                            type="button">
+
+                            <span id="navAvatar">MS</span>
+                            <span id="navUserName">Student</span>
+                            <i class="bi bi-chevron-down"></i>
+
+                        </button>
+
+                        <div
+                            id="userDropdown"
+                            class="user-dropdown d-none">
+
+                            <button data-view="profile">
+                                <i class="bi bi-person"></i>
+                                My Profile
+                            </button>
+
+                            <button data-view="submit">
+                                <i class="bi bi-lightbulb"></i>
+                                Submit Idea
+                            </button>
+
+                            <button id="logoutButton">
+                                <i class="bi bi-box-arrow-right"></i>
+                                Logout
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+
+<main class="main-wrapper">
+
+<div class="container">
+
+<div id="dashboard" class="app-view active-view">
+
+    <!-- HERO -->
+
+    <section class="hero-section">
+
+        <div class="hero-grid"></div>
+
+        <div class="row align-items-center position-relative">
+
+            <div class="col-lg-7">
+
+                <div class="eyebrow">
+                    <span class="pulse-dot"></span>
+                    STUDENT INNOVATION NETWORK
+                </div>
+
+                <h1 class="hero-title">
+
+                    Turn your
+                    <span class="gradient-text">
+                        ideas
+                    </span>
+                    into impact.
+
+                </h1>
+
+                <p class="hero-description">
+
+                    Discover ambitious student projects, connect with
+                    innovators, find collaborators and build the next
+                    generation of ideas.
+
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button
+                        class="btn btn-neon btn-lg"
+                        data-view="dashboard"
+                        id="exploreButton">
+
+                        <i class="bi bi-compass-fill"></i>
+                        Explore Ideas
+
+                    </button>
+
+                    <button
+                        class="btn btn-outline-neon btn-lg"
+                        data-view="submit">
+
+                        <i class="bi bi-lightbulb-fill"></i>
+                        Share Your Idea
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-5 mt-5 mt-lg-0">
+
+                <div class="hero-stat-panel">
+
+                    <div class="stat-item">
+                        <span class="stat-number"
+                              id="totalIdeas">
+                            6
+                        </span>
+
+                        <span class="stat-label">
+                            Ideas
+                        </span>
+                    </div>
+
+                    <div class="stat-divider"></div>
+
+                    <div class="stat-item">
+                        <span class="stat-number"
+                              id="prototypeCount">
+                            2
+                        </span>
+
+                        <span class="stat-label">
+                            Prototypes
+                        </span>
+                    </div>
+
+                    <div class="stat-divider"></div>
+
+                    <div class="stat-item">
+                        <span class="stat-number"
+                              id="collaboratorCount">
+                            3
+                        </span>
+
+                        <span class="stat-label">
+                            Open Teams
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        
+
+        <div class="search-panel">
+
+            <div class="search-wrapper">
+
+                <i class="bi bi-search search-symbol"></i>
+
+                <input
+                    type="search"
+                    id="ideaSearch"
+                    class="search-input"
+                    placeholder="Search ideas, projects, creators...">
+
+                <button
+                    id="searchButton"
+                    class="btn btn-neon search-button">
+
+                    Search
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+    <div class="section-heading mt-5">
+
+        <div>
+
+            <span class="section-kicker">
+                DISCOVER
+            </span>
+
+            <h2>
+                Explore student innovations
+            </h2>
+
+        </div>
+
+        <span class="idea-count">
+            <span id="visibleIdeaCount">6</span>
+            results
+        </span>
+
+    </div>
+
+
+
+
+    <div class="filter-bar">
+
+        <div class="category-track">
+
+            <button
+                class="category-pill active"
+                data-category="all">
+
+                <i class="bi bi-stars"></i>
+                All
+
+            </button>
+
+            <button
+                class="category-pill"
+                data-category="AI & DeepTech">
+
+                <i class="bi bi-cpu"></i>
+                AI & DeepTech
+
+            </button>
+
+            <button
+                class="category-pill"
+                data-category="Social Impact">
+
+                <i class="bi bi-heart-pulse"></i>
+                Social Impact
+
+            </button>
+
+            <button
+                class="category-pill"
+                data-category="Business, Health & Lifestyle">
+
+                <i class="bi bi-graph-up-arrow"></i>
+                Business
+
+            </button>
+
+            <button
+                class="category-pill"
+                data-category="Creative Arts & MediaTech">
+
+                <i class="bi bi-palette"></i>
+                Creative
+
+            </button>
+
+        </div>
+
+
+        <select id="sortIdeas" class="sort-select">
+
+            <option value="default">
+                Sort: Recommended
+            </option>
+
+            <option value="title">
+                Sort: A-Z
+            </option>
+
+            <option value="stage">
+                Sort: Stage
+            </option>
+
+        </select>
+
+    </div>
+
+    <div
+        id="ideasGrid"
+        class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+
+        
+
+        <div
+            class="col idea-item"
+            data-category="AI & DeepTech"
+            data-title="NeuraLearn"
+            data-stage="Prototype">
+
+            <article class="idea-card">
+
+                <div class="card-top">
+
+                    <span class="category-badge category-ai">
+                        AI & DeepTech
+                    </span>
+
+                    <button
+                        class="bookmark-button"
+                        data-bookmark="NeuraLearn"
+                        title="Bookmark">
+
+                        <i class="bi bi-bookmark"></i>
+
+                    </button>
+
+                </div>
+
+                <span class="stage-badge stage-prototype">
+                    Prototype
+                </span>
+
+                <h3 class="idea-title">
+                    NeuraLearn
+                </h3>
+
+                <p class="idea-summary">
+                    Adaptive AI study companion that transforms learning
+                    material into personalized revision paths.
+                </p>
+
+                <div class="collaborator-badge">
+                    <i class="bi bi-people-fill"></i>
+                    Looking for Co-founders
+                </div>
+
+                <div class="creator-row">
+
+                    <div class="creator-avatar">
+                        AS
+                    </div>
+
+                    <div>
+                        <small>Created by</small>
+                        <strong>Aarav Sharma</strong>
+                    </div>
+
+                </div>
+
+                <button
+                    class="btn btn-card w-100 mt-4"
+                    data-bs-toggle="modal"
+                    data-bs-target="#ideaModal"
+                    data-title="NeuraLearn"
+                    data-creator="Aarav Sharma"
+                    data-stage="Prototype"
+                    data-category="AI & DeepTech"
+                    data-problem="Students struggle to create effective study plans from large amounts of learning material."
+                    data-solution="NeuraLearn uses adaptive AI to analyze learning resources and generate personalized revision paths."
+                    data-audience="College students, exam aspirants and self-directed learners.">
+
+                    View Deep Dive
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </button>
+
+            </article>
+
+        </div>
+
+
+    
+
+        <div
+            class="col idea-item"
+            data-category="Social Impact"
+            data-title="CleanLoop"
+            data-stage="Concept">
+
+            <article class="idea-card">
+
+                <div class="card-top">
+
+                    <span class="category-badge category-social">
+                        Social Impact
+                    </span>
+
+                    <button
+                        class="bookmark-button"
+                        data-bookmark="CleanLoop">
+
+                        <i class="bi bi-bookmark"></i>
+
+                    </button>
+
+                </div>
+
+                <span class="stage-badge stage-concept">
+                    Concept
+                </span>
+
+                <h3 class="idea-title">
+                    CleanLoop
+                </h3>
+
+                <p class="idea-summary">
+                    Campus waste intelligence network connecting students
+                    with recycling initiatives.
+                </p>
+
+                <div class="collaborator-badge purple-badge">
+                    <i class="bi bi-people-fill"></i>
+                    Looking for Collaborators
+                </div>
+
+                <div class="creator-row">
+
+                    <div class="creator-avatar purple-avatar">
+                        RI
+                    </div>
+
+                    <div>
+                        <small>Created by</small>
+                        <strong>Riya Iyer</strong>
+                    </div>
+
+                </div>
+
+                <button
+                    class="btn btn-card w-100 mt-4"
+                    data-bs-toggle="modal"
+                    data-bs-target="#ideaModal"
+                    data-title="CleanLoop"
+                    data-creator="Riya Iyer"
+                    data-stage="Concept"
+                    data-category="Social Impact"
+                    data-problem="Campus recycling programs often lack real-time information about collection points."
+                    data-solution="CleanLoop connects students, campus facilities and recycling partners through one platform."
+                    data-audience="Universities, student communities and recycling organizations.">
+
+                    View Deep Dive
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </button>
+
+            </article>
+
+        </div>
+
+
+    
+
+        <div
+            class="col idea-item"
+            data-category="Business, Health & Lifestyle"
+            data-title="FitCampus"
+            data-stage="Launched">
+
+            <article class="idea-card">
+
+                <div class="card-top">
+
+                    <span class="category-badge category-business">
+                        Health & Lifestyle
+                    </span>
+
+                    <button
+                        class="bookmark-button"
+                        data-bookmark="FitCampus">
+
+                        <i class="bi bi-bookmark"></i>
+
+                    </button>
+
+                </div>
+
+                <span class="stage-badge stage-launched">
+                    Launched
+                </span>
+
+                <h3 class="idea-title">
+                    FitCampus
+                </h3>
+
+                <p class="idea-summary">
+                    Student wellness platform connecting campus communities
+                    through healthy routines.
+                </p>
+
+                <div class="collaborator-badge">
+                    <i class="bi bi-check-circle-fill"></i>
+                    Team Complete
+                </div>
+
+                <div class="creator-row">
+
+                    <div class="creator-avatar">
+                        VK
+                    </div>
+
+                    <div>
+                        <small>Created by</small>
+                        <strong>Vikram Kapoor</strong>
+                    </div>
+
+                </div>
+
+                <button
+                    class="btn btn-card w-100 mt-4"
+                    data-bs-toggle="modal"
+                    data-bs-target="#ideaModal"
+                    data-title="FitCampus"
+                    data-creator="Vikram Kapoor"
+                    data-stage="Launched"
+                    data-category="Business, Health & Lifestyle"
+                    data-problem="Students find it difficult to maintain consistent wellness habits."
+                    data-solution="FitCampus provides wellness challenges, campus activities and community accountability."
+                    data-audience="College students and campus wellness organizations.">
+
+                    View Deep Dive
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </button>
+
+            </article>
+
+        </div>
+
+
+        
+
+        <div
+            class="col idea-item"
+            data-category="Creative Arts & MediaTech"
+            data-title="CampusCast"
+            data-stage="Prototype">
+
+            <article class="idea-card">
+
+                <div class="card-top">
+
+                    <span class="category-badge category-creative">
+                        Creative Arts
+                    </span>
+
+                    <button
+                        class="bookmark-button"
+                        data-bookmark="CampusCast">
+
+                        <i class="bi bi-bookmark"></i>
+
+                    </button>
+
+                </div>
+
+                <span class="stage-badge stage-prototype">
+                    Prototype
+                </span>
+
+                <h3 class="idea-title">
+                    CampusCast
+                </h3>
+
+                <p class="idea-summary">
+                    Student media network for discovering campus creators,
+                    podcasts, films and digital stories.
+                </p>
+
+                <div class="collaborator-badge purple-badge">
+                    <i class="bi bi-people-fill"></i>
+                    Looking for Creators
+                </div>
+
+                <div class="creator-row">
+
+                    <div class="creator-avatar purple-avatar">
+                        NM
+                    </div>
+
+                    <div>
+                        <small>Created by</small>
+                        <strong>Neha Mehta</strong>
+                    </div>
+
+                </div>
+
+                <button
+                    class="btn btn-card w-100 mt-4"
+                    data-bs-toggle="modal"
+                    data-bs-target="#ideaModal"
+                    data-title="CampusCast"
+                    data-creator="Neha Mehta"
+                    data-stage="Prototype"
+                    data-category="Creative Arts & MediaTech"
+                    data-problem="Student creators lack a centralized space to showcase their work."
+                    data-solution="CampusCast creates a discovery and collaboration network for student creators."
+                    data-audience="Student creators, media clubs and college communities.">
+
+                    View Deep Dive
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </button>
+
+            </article>
+
+        </div>
+
+
+        
+
+        <div
+            class="col idea-item"
+            data-category="AI & DeepTech"
+            data-title="CodeLens"
+            data-stage="Concept">
+
+            <article class="idea-card">
+
+                <div class="card-top">
+
+                    <span class="category-badge category-ai">
+                        AI & DeepTech
+                    </span>
+
+                    <button
+                        class="bookmark-button"
+                        data-bookmark="CodeLens">
+
+                        <i class="bi bi-bookmark"></i>
+
+                    </button>
+
+                </div>
+
+                <span class="stage-badge stage-concept">
+                    Concept
+                </span>
+
+                <h3 class="idea-title">
+                    CodeLens
+                </h3>
+
+                <p class="idea-summary">
+                    Intelligent code review assistant designed specifically
+                    for student developers.
+                </p>
+
+                <div class="collaborator-badge">
+                    <i class="bi bi-people-fill"></i>
+                    Looking for Co-founders
+                </div>
+
+                <div class="creator-row">
+
+                    <div class="creator-avatar">
+                        KA
+                    </div>
+
+                    <div>
+                        <small>Created by</small>
+                        <strong>Kabir Arora</strong>
+                    </div>
+
+                </div>
+
+                <button
+                    class="btn btn-card w-100 mt-4"
+                    data-bs-toggle="modal"
+                    data-bs-target="#ideaModal"
+                    data-title="CodeLens"
+                    data-creator="Kabir Arora"
+                    data-stage="Concept"
+                    data-category="AI & DeepTech"
+                    data-problem="Beginning developers often struggle to understand how to improve their code."
+                    data-solution="CodeLens provides contextual code feedback and developer-friendly recommendations."
+                    data-audience="Computer science students and early-stage developers.">
+
+                    View Deep Dive
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </button>
+
+            </article>
+
+        </div>
+
+
+        
+
+        <div
+            class="col idea-item"
+            data-category="Social Impact"
+            data-title="MentorBridge"
+            data-stage="Launched">
+
+            <article class="idea-card">
+
+                <div class="card-top">
+
+                    <span class="category-badge category-social">
+                        Social Impact
+                    </span>
+
+                    <button
+                        class="bookmark-button"
+                        data-bookmark="MentorBridge">
+
+                        <i class="bi bi-bookmark"></i>
+
+                    </button>
+
+                </div>
+
+                <span class="stage-badge stage-launched">
+                    Launched
+                </span>
+
+                <h3 class="idea-title">
+                    MentorBridge
+                </h3>
+
+                <p class="idea-summary">
+                    Peer mentoring platform matching students with experienced
+                    learners and alumni.
+                </p>
+
+                <div class="collaborator-badge">
+                    <i class="bi bi-check-circle-fill"></i>
+                    Team Complete
+                </div>
+
+                <div class="creator-row">
+
+                    <div class="creator-avatar">
+                        SD
+                    </div>
+
+                    <div>
+                        <small>Created by</small>
+                        <strong>Simran Das</strong>
+                    </div>
+
+                </div>
+
+                <button
+                    class="btn btn-card w-100 mt-4"
+                    data-bs-toggle="modal"
+                    data-bs-target="#ideaModal"
+                    data-title="MentorBridge"
+                    data-creator="Simran Das"
+                    data-stage="Launched"
+                    data-category="Social Impact"
+                    data-problem="Students have limited access to practical guidance."
+                    data-solution="MentorBridge matches students with peers and alumni according to their interests."
+                    data-audience="College students and alumni networks.">
+
+                    View Deep Dive
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </button>
+
+            </article>
+
+        </div>
+
+    </div>
+
+
+    <div id="noResults" class="no-results d-none">
+
+        <i class="bi bi-search"></i>
+
+        <h3>
+            No ideas found
+        </h3>
+
+        <p>
+            Try another keyword or category.
+        </p>
+
+        <button
+            id="clearSearch"
+            class="btn btn-outline-neon">
+
+            Clear Search
+
+        </button>
+
+    </div>
+
+
+
+
+    <section class="bookmark-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-kicker">
+                    SAVED
+                </span>
+
+                <h2>
+                    Your Bookmarks
+                </h2>
+
+            </div>
+
+            <span id="bookmarkCount">
+                0 saved
+            </span>
+
+        </div>
+
+        <div id="bookmarkList" class="bookmark-list">
+
+            <div class="empty-bookmark">
+
+                <i class="bi bi-bookmark-star"></i>
+
+                <p>
+                    Bookmark ideas you want to revisit.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+
+
+<div id="profile" class="app-view">
+
+    <div class="page-header">
+
+        <span class="section-kicker">
+            STUDENT PROFILE
+        </span>
+
+        <h1>
+            Your <span class="gradient-text">innovation profile.</span>
+        </h1>
+
+        <p>
+            Manage your student identity, skills, projects and activity.
+        </p>
+
+    </div>
+
+
+    <div class="row g-4">
+
+        <div class="col-lg-4">
+
+            <div class="profile-card">
+
+                <div class="profile-avatar" id="profileAvatar">
+                    MS
+                </div>
+
+                <div class="profile-badge">
+                    <i class="bi bi-patch-check-fill"></i>
+                    Student Innovator
+                </div>
+
+                <h2 id="profileName">
+                    Mahi Sharma
+                </h2>
+
+                <p id="profileDepartment">
+                    Computer Science & Engineering
+                </p>
+
+                <div class="profile-divider"></div>
+
+                <span class="mini-heading">
+                    SKILLS
+                </span>
+
+                <div class="skills-list">
+
+                    <span>Java</span>
+                    <span>JavaScript</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>MySQL</span>
+                    <span>UI/UX</span>
+
+                </div>
+
+                <button
+                    id="editProfileButton"
+                    class="btn btn-outline-neon w-100 mt-4">
+
+                    <i class="bi bi-pencil"></i>
+                    Edit Profile
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-8">
+
+            <div class="section-heading mb-4">
+
+                <div>
+
+                    <span class="section-kicker">
+                        PORTFOLIO
+                    </span>
+
+                    <h2>
+                        My Submitted Ideas
+                    </h2>
+
+                </div>
+
+                <span id="myIdeaCount">
+                    0 projects
+                </span>
+
+            </div>
+
+
+            <div id="myIdeasList">
+
+                <div class="empty-profile">
+
+                    <i class="bi bi-lightbulb"></i>
+
+                    <h3>
+                        No submitted ideas yet
+                    </h3>
+
+                    <p>
+                        Share your first innovation with the community.
+                    </p>
+
+                    <button
+                        class="btn btn-neon"
+                        data-view="submit">
+
+                        Submit Your First Idea
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="activity-panel mt-4">
+
+        <span class="section-kicker">
+            RECENT ACTIVITY
+        </span>
+
+        <h2>
+            Your activity
+        </h2>
+
+        <div id="activityList">
+
+            <div class="activity-item">
+
+                <i class="bi bi-stars"></i>
+
+                <div>
+
+                    <strong>
+                        Welcome to InnoSpark
+                    </strong>
+
+                    <small>
+                        Start exploring student innovations.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<div id="submit" class="app-view">
+
+    <div class="page-header">
+
+        <span class="section-kicker">
+            BUILD SOMETHING
+        </span>
+
+        <h1>
+            Submit your <span class="gradient-text">idea.</span>
+        </h1>
+
+        <p>
+            Describe your innovation and find students who can help
+            you take it further.
+        </p>
+
+    </div>
+
+
+    <div class="row justify-content-center">
+
+        <div class="col-xl-9">
+
+            <div class="submission-card">
+
+                <div class="submission-header">
+
+                    <div class="submission-icon">
+                        <i class="bi bi-lightbulb-fill"></i>
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Innovation submission
+                        </h2>
+
+                        <p>
+                            All fields are required unless marked optional.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="ideaForm" novalidate>
+
+                    <div class="row g-4">
+
+                        <div class="col-md-8">
+
+                            <label class="form-label">
+                                Idea Title
+                            </label>
+
+                            <input
+                                id="ideaTitle"
+                                class="form-control"
+                                placeholder="e.g. SmartCampus AI"
+                                required>
+
+                            <div class="invalid-feedback">
+                                Enter an idea title.
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <label class="form-label">
+                                Category
+                            </label>
+
+                            <select
+                                id="ideaCategory"
+                                class="form-select"
+                                required>
+
+                                <option value="">
+                                    Select category
+                                </option>
+
+                                <option>
+                                    AI & DeepTech
+                                </option>
+
+                                <option>
+                                    Social Impact
+                                </option>
+
+                                <option>
+                                    Business, Health & Lifestyle
+                                </option>
+
+                                <option>
+                                    Creative Arts & MediaTech
+                                </option>
+
+                            </select>
+
+                            <div class="invalid-feedback">
+                                Select a category.
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <label class="form-label">
+                                Current Stage
+                            </label>
+
+                            <select
+                                id="ideaStage"
+                                class="form-select"
+                                required>
+
+                                <option value="">
+                                    Select stage
+                                </option>
+
+                                <option>Concept</option>
+                                <option>Prototype</option>
+                                <option>Launched</option>
+
+                            </select>
+
+                            <div class="invalid-feedback">
+                                Select a stage.
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-8">
+
+                            <label class="form-label">
+                                Target Audience
+                            </label>
+
+                            <input
+                                id="targetMarket"
+                                class="form-control"
+                                placeholder="Who will use your product?"
+                                required>
+
+                            <div class="invalid-feedback">
+                                Enter your target audience.
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-12">
+
+                            <label class="form-label">
+                                Problem Statement
+                            </label>
+
+                            <textarea
+                                id="problemStatement"
+                                class="form-control"
+                                rows="5"
+                                placeholder="What problem are you solving?"
+                                required></textarea>
+
+                            <div class="invalid-feedback">
+                                Describe the problem.
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-12">
+
+                            <label class="form-label">
+                                Solution
+                            </label>
+
+                            <textarea
+                                id="solutionStatement"
+                                class="form-control"
+                                rows="5"
+                                placeholder="How does your solution work?"
+                                required></textarea>
+
+                            <div class="invalid-feedback">
+                                Describe the solution.
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-12">
+
+                            <div class="collaborator-toggle">
+
+                                <div class="form-check form-switch">
+
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        id="cofounderCheck">
+
+                                    <label
+                                        class="form-check-label"
+                                        for="cofounderCheck">
+
+                                        <strong>
+                                            Looking for co-founders /
+                                            collaborators
+                                        </strong>
+
+                                        <small>
+                                            Let other students know that
+                                            your team is open.
+                                        </small>
+
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-12">
+
+                            <button
+                                class="btn btn-neon btn-lg"
+                                type="submit">
+
+                                <i class="bi bi-rocket-takeoff-fill"></i>
+                                Publish Innovation
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+</main>
+
+
+<!-- ================= IDEA MODAL ================= -->
+
+<div
+    class="modal fade"
+    id="ideaModal"
+    tabindex="-1">
+
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+        <div class="modal-content idea-modal">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span
+                        id="modalCategory"
+                        class="category-badge category-ai">
+                        AI & DeepTech
+                    </span>
+
+                    <h2
+                        id="ideaModalLabel"
+                        class="modal-title mt-3">
+                        Idea
+                    </h2>
+
+                    <div class="modal-creator">
+                        Created by
+                        <strong id="modalCreator">
+                            Creator
+                        </strong>
+                    </div>
+
+                </div>
+
+                <button
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <div class="modal-actions">
+
+                    <span
+                        id="modalStage"
+                        class="stage-badge stage-prototype">
+                        Prototype
+                    </span>
+
+                    <button
+                        id="modalBookmark"
+                        class="btn modal-action">
+
+                        <i class="bi bi-bookmark"></i>
+                        Save
+
+                    </button>
+
+                </div>
+
+
+                <div class="deep-dive-section">
+
+                    <div class="deep-dive-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Problem Statement
+                        </h3>
+
+                        <p id="modalProblem"></p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="deep-dive-section">
+
+                    <div class="deep-dive-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Solution Architecture
+                        </h3>
+
+                        <p id="modalSolution"></p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="deep-dive-section">
+
+                    <div class="deep-dive-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Target Audience
+                        </h3>
+
+                        <p id="modalAudience"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <a
+                    id="connectTeam"
+                    class="btn btn-neon"
+                    href="mailto:innovator@innospark.example">
+
+                    <i class="bi bi-send-fill"></i>
+                    Connect with Team
+
+                </a>
+
+                <button
+                    class="btn btn-modal-secondary"
+                    data-bs-dismiss="modal">
+
+                    Close
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<div
+    class="modal fade"
+    id="authModal"
+    tabindex="-1">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content auth-modal">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="section-kicker">
+                        INNOSPARK ACCOUNT
+                    </span>
+
+                    <h2 id="authTitle">
+                        Welcome back
+                    </h2>
+
+                </div>
+
+                <button
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <div class="auth-tabs">
+
+                    <button
+                        class="auth-tab active"
+                        data-auth="login">
+
+                        Login
+
+                    </button>
+
+                    <button
+                        class="auth-tab"
+                        data-auth="register">
+
+                        Create Account
+
+                    </button>
+
+                </div>
+
+
+            
+
+                <form id="loginForm">
+
+                    <label class="form-label">
+                        Email
+                    </label>
+
+                    <input
+                        id="loginEmail"
+                        type="email"
+                        class="form-control mb-3"
+                        placeholder="student@example.com"
+                        required>
+
+                    <label class="form-label">
+                        Password
+                    </label>
+
+                    <input
+                        id="loginPassword"
+                        type="password"
+                        class="form-control mb-3"
+                        placeholder="Enter password"
+                        required>
+
+                    <button
+                        class="btn btn-neon w-100"
+                        type="submit">
+
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        Login to InnoSpark
+
+                    </button>
+
+                </form>
+
+
+                
+
+                <form
+                    id="registerForm"
+                    class="d-none">
+
+                    <label class="form-label">
+                        Full Name
+                    </label>
+
+                    <input
+                        id="registerName"
+                        class="form-control mb-3"
+                        placeholder="Your full name"
+                        required>
+
+                    <label class="form-label">
+                        Email
+                    </label>
+
+                    <input
+                        id="registerEmail"
+                        type="email"
+                        class="form-control mb-3"
+                        placeholder="student@example.com"
+                        required>
+
+                    <label class="form-label">
+                        Department
+                    </label>
+
+                    <input
+                        id="registerDepartment"
+                        class="form-control mb-3"
+                        placeholder="Computer Science & Engineering"
+                        required>
+
+                    <label class="form-label">
+                        Password
+                    </label>
+
+                    <input
+                        id="registerPassword"
+                        type="password"
+                        class="form-control mb-3"
+                        minlength="6"
+                        placeholder="Minimum 6 characters"
+                        required>
+
+                    <button
+                        class="btn btn-neon w-100"
+                        type="submit">
+
+                        <i class="bi bi-person-plus-fill"></i>
+                        Create Student Account
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div
+    class="modal fade"
+    id="profileModal"
+    tabindex="-1">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content auth-modal">
+
+            <div class="modal-header">
+
+                <h2>
+                    Edit Profile
+                </h2>
+
+                <button
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <form id="profileForm">
+
+                    <label class="form-label">
+                        Full Name
+                    </label>
+
+                    <input
+                        id="editName"
+                        class="form-control mb-3"
+                        required>
+
+                    <label class="form-label">
+                        Department
+                    </label>
+
+                    <input
+                        id="editDepartment"
+                        class="form-control mb-3"
+                        required>
+
+                    <label class="form-label">
+                        Skills
+                    </label>
+
+                    <input
+                        id="editSkills"
+                        class="form-control mb-4"
+                        placeholder="Java, JavaScript, UI/UX">
+
+                    <button
+                        class="btn btn-neon w-100"
+                        type="submit">
+
+                        Save Profile
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<div
+    id="toastContainer"
+    class="toast-container position-fixed bottom-0 end-0 p-4">
+
+</div>
+
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-content">
+
+            <div>
+
+                <strong>
+                    Inno<span class="brand-highlight">
+                        Spark
+                    </span>
+                </strong>
+
+                <p>
+                    Ideas today. Innovations tomorrow.
+                </p>
+
+            </div>
+
+            <span>
+                © 2026 InnoSpark
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
